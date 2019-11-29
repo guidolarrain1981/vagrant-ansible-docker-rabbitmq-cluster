@@ -1,0 +1,20 @@
+- name: Run the equivalent of "apt-get update"
+  apt:
+    update_cache: yes
+  become: yes
+
+- name: Install docker.io and docker-compose
+  apt: name={{ item }} state=present
+  with_items:
+  - docker.io
+  - docker-compose
+  become: yes
+
+- name: Upgrade docker-compose to lastest version
+  script: "{{ playbook_dir }}/docker-compose-upgrade.sh"
+  become: yes
+
+- meta: flush_handlers
+
+- name: Enable and start docker
+  service: name=docker enabled=true state=started

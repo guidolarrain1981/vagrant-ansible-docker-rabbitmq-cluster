@@ -1,0 +1,19 @@
+- name: Replace Username
+  lineinfile:
+    path: /home/vagrant/docker-rabbitmq-cluster/.env
+    regexp: 'RABBITMQ_DEFAULT_USER=guest'
+    line: "RABBITMQ_DEFAULT_USER={{ username }}"
+    owner: root
+    group: root
+    mode: '0644'
+  become: yes
+
+- name: Replace Password
+  lineinfile:
+    path: /home/vagrant/docker-rabbitmq-cluster/.env
+    regexp: 'RABBITMQ_DEFAULT_PASS=guest'
+    line: "RABBITMQ_DEFAULT_PASS={{ password }}"
+    owner: root
+    group: root
+    mode: '0644'
+  become: yes

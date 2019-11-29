@@ -1,0 +1,2 @@
+- name: RabbitMQ Cluster
+  command: chdir=/home/vagrant/docker-rabbitmq-cluster sudo docker-compose up -d

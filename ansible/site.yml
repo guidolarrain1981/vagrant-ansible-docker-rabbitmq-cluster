@@ -1,0 +1,10 @@
+- hosts: rabbitmq
+  roles:
+  - docker-app-server
+  - variables
+  - rabbitmq 
+  tags:
+  - rabbitmq
+  vars:
+  - username: "guido"
+  - password: "uSHOULDhireME"
